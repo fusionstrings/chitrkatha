@@ -33,21 +33,21 @@ async function serveRequest(
       } catch (error) {
         try {
           // Try if scoped route handler exists
-          if (url.startsWith("/api/comics/")) {
+          if (url.startsWith("/comics")) {
+            const module = await import(`./routes/comics.ts`);
+            const response = await module.default(request);
+            request.respond(response);
+          } else if (url.startsWith("/api/comics")) {
             const module = await import(`./routes/api/comics.ts`);
             const response = await module.default(request);
-
             request.respond(response);
-          }
-          if (url.startsWith("/api/")) {
+          } else if (url.startsWith("/api/")) {
             const module = await import(`./routes/api.ts`);
             const response = await module.default(request);
-
             request.respond(response);
           } else {
             // Remove the duplicate as this also exist in the catch block of next step
             const response = await pageNotFound(request);
-
             request.respond(response);
           }
         } catch (error) {

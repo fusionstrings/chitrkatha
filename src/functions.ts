@@ -1,7 +1,11 @@
 import { cwd, serveFile, ServerRequest } from "../deps.ts";
 
+function getPathQuery(path: string) {
+  return path.split("?");
+}
+
 function removePathQuery(path: string) {
-  const [modulePath] = path.split("?");
+  const [modulePath] = getPathQuery(path);
 
   return modulePath;
 }
@@ -35,6 +39,7 @@ async function serveStatic(request: ServerRequest) {
 }
 
 export {
+  getPathQuery,
   removeLeadingSlash,
   removePathQuery,
   removeSlashes,

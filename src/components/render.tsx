@@ -2,15 +2,14 @@ import { React, ReactDOMServer } from "../../deps.ts";
 import Document from "./document.tsx";
 
 type RenderProps = {
-  url: string;
-  data?: any;
+  props?: object;
   Component: React.ElementType;
 };
 
-async function Render({ url, data, Component }: RenderProps) {
+async function Render({ Component, props }: RenderProps) {
   // preserve data-reactroot
   const __html = ReactDOMServer.renderToString(
-    <main id="__root"><Component url={url} data={data} /></main>,
+    <main id="__root"><Component {...props} /></main>,
   );
 
   const document = ReactDOMServer.renderToStaticMarkup(

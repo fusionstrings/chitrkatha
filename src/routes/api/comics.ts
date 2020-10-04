@@ -1,11 +1,11 @@
 import type { ServerRequest } from "../../../deps.ts";
+import { removePathQuery, removeSlashes } from "../../functions.ts";
 
 async function fetchComics(comicsNumber: string) {
   try {
     const url = `https://xkcd.com/${
       comicsNumber === "" ? "" : `${comicsNumber}/`
     }info.0.json`;
-    // console.log("url: ", url);
     // https://xkcd.com/614/info.0.json
     const response = await fetch(url);
     const json = await response.json();
@@ -20,13 +20,27 @@ async function main(request: ServerRequest) {
     const host = request.headers.get("host");
 
     // Assuming `http`
-    const url = new URL(`http://${host}/${request.url}`);
+    const url = new URL(`http://${host}${request.url}`);
     const page = url.searchParams.get("page");
     const offset = url.searchParams.get("offset");
+
     const headers = new Headers();
     headers.set("Date", new Date().toUTCString());
     headers.set("Connection", "keep-alive");
     headers.set("Content-Type", "application/json; charset=utf-8");
+
+    const path = removeSlashes(removePathQuery(request.url));
+    const comicsNumber = removeSlashes(path.split("api/comics")[1]);
+
+    if (Number.isNaN(parseInt(comicsNumber)) === false) {
+      const data = await fetchComics(comicsNumber);
+      const body = JSON.stringify([data].filter(Boolean));
+      const response = {
+        body,
+        headers,
+      };
+      return response;
+    }
 
     const latestComics = await fetchComics("");
     const { num: TOTAL_RECORDS } = latestComics;
@@ -42,11 +56,12 @@ async function main(request: ServerRequest) {
           (_, index) =>
             (Math.ceil(PAGE_NUMBER) < 1
               ? TOTAL_RECORDS
-              : TOTAL_RECORDS - (RECORDS_PER_PAGE * (PAGE_NUMBER - 1))) - index,
+              : TOTAL_RECORDS - (RECORDS_PER_PAGE * (PAGE_NUMBER - 1))) -
+            index,
         )
-          /* .slice(0, THUMBNAIL_PER_PAGE) */ .map(async (comics: number) => {
+          .map(async (comicsNumber: number) => {
             try {
-              return fetchComics(`${comics}`);
+              return fetchComics(`${comicsNumber}`);
             } catch (error) {
               // https://xkcd.com/404/info.0.json is broken
               return false;

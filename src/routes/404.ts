@@ -13,7 +13,6 @@ async function pageNotFound(request: ServerRequest) {
 
     const body = await Render(
       {
-        url,
         Component,
       },
     );

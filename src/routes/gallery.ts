@@ -1,46 +1,27 @@
 import type { ServerRequest } from "../../deps.ts";
 import Render from "./../components/render.tsx";
-
-async function fetchComics(comicsNumber: string) {
-  const url = `https://xkcd.com/${
-    comicsNumber === "" ? "" : `${comicsNumber}/`
-  }info.0.json`;
-  // console.log("url: ", url);
-  // https://xkcd.com/614/info.0.json
-  const response = await fetch(url);
-  const json = await response.json();
-  return json;
-}
+import Gallery from "./../components/gallery.tsx";
 
 async function main(request: ServerRequest) {
   try {
-    const { url } = request;
+    //const { url } = request;
     const headers = new Headers();
     headers.set("Date", new Date().toUTCString());
     headers.set("Connection", "keep-alive");
     headers.set("Content-Type", "text/html; charset=utf-8");
 
-    const latestComics = await fetchComics("");
-    const { num } = latestComics;
-    const THUMBNAIL_PER_PAGE = 100;
+    const host = request.headers.get("host");
 
-    const data = await Promise.all(
-      Array.from(
-        { length: num },
-        (_, index) => num - index,
-      )
-        .slice(0, THUMBNAIL_PER_PAGE - 1).map(async (comics: number) => {
-          return fetchComics(`${comics}`);
-        }),
-    );
+    // Assuming `http`
+    const API_URL = new URL(`http://${host}/api/comics`);
 
-    const { default: Component } = await import("../components/gallery.tsx");
+    const data = await fetch(API_URL);
+    const comics = await data.json();
 
     const body = await Render(
       {
-        url,
-        data,
-        Component,
+        props: { comics },
+        Component: Gallery,
       },
     );
     const response = {
