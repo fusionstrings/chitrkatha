@@ -1,9 +1,14 @@
-function main(args: string[] = []): Deno.Process {
+function main(args: string[]): Deno.Process {
+
+  const [mode = "production"] = args;
+
+  console.log(`started in ${mode} mode at ${new Date().toUTCString()}`);
+
   return Deno.run({
     cmd: [
       "deno",
       "run",
-      //"--importmap=importmap.json", // watch is not compatible with this
+      // "--importmap=importmap.json", // watch is not compatible with this
       "--unstable",
       "--allow-net",
       "--allow-read",
@@ -15,5 +20,6 @@ function main(args: string[] = []): Deno.Process {
 }
 
 if (import.meta.main) {
-  await main().status();
+  console.log("ABCD [A XKCD remix]");
+  await main(Deno.args).status();
 }
