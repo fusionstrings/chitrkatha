@@ -19,14 +19,12 @@ A [XKCD](https://xkcd.com/) UX and [API](https://xkcd.com/json.html) remix.
 Default port `1729`
 `deno run --allow-all ./start.ts`
 
+### Run using Docker
+- `docker run --rm -it  --env PORT=8080 DENO_ENV=production -p 8080:8080 fusionstrings/abcd:v0.1.0`
+
 ### Build using Docker
 
 `docker build --pull --rm -f "Dockerfile" -t abcd:latest "."`
-
-### Run using Docker
-- `docker run --rm -it  --env-file=.env -p 8080:8080 abcd:latest`
-- `docker run --rm -it  --env PORT=8080 -p 8080:8080 abcd:latest`
-- `docker run --rm -it  --env PORT=8080 DENO_ENV=production -p 8080:8080 fusionstrings/abcd:latest`
 
 ### Make it real
 - [x] A minimal dev server #getstart
