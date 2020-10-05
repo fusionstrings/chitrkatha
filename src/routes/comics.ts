@@ -23,7 +23,7 @@ async function main(request: ServerRequest) {
 
     const body = await Render(
       {
-        props: { comics },
+        props: { ...comics },
         Component: Comics,
       },
     );

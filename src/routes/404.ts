@@ -3,7 +3,6 @@ import Render from "../components/render.tsx";
 
 async function pageNotFound(request: ServerRequest) {
   try {
-    const { url } = request;
     const headers = new Headers();
     headers.set("Date", new Date().toUTCString());
     headers.set("Connection", "keep-alive");
@@ -24,7 +23,7 @@ async function pageNotFound(request: ServerRequest) {
     };
     return response;
   } catch (error) {
-    return { status: 500, body: "500" };
+    return { status: 500 };
   }
 }
 

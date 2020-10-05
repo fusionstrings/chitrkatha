@@ -33,21 +33,31 @@ async function main(request: ServerRequest) {
     const path = removeSlashes(removePathQuery(request.url));
     const comicsNumber = removeSlashes(path.split("api/comics")[1]);
 
+    const latestComics = await fetchComics("");
+    const { num: TOTAL_RECORDS } = latestComics;
+    const RECORDS_PER_PAGE = offset ? parseInt(offset, 10) : 100;
+    const TOTAL_PAGES = Math.ceil(TOTAL_RECORDS / RECORDS_PER_PAGE);
+    const PAGE_NUMBER = page ? parseInt(page, 10) : 1;
+
+    const payload = {
+      records: TOTAL_RECORDS,
+      offset: RECORDS_PER_PAGE,
+      pages: TOTAL_PAGES,
+      page: PAGE_NUMBER,
+    };
+
     if (Number.isNaN(parseInt(comicsNumber)) === false) {
       const data = await fetchComics(comicsNumber);
-      const body = JSON.stringify([data].filter(Boolean));
+
+      const body = JSON.stringify(
+        { ...payload, comics: [data].filter(Boolean) },
+      );
       const response = {
         body,
         headers,
       };
       return response;
     }
-
-    const latestComics = await fetchComics("");
-    const { num: TOTAL_RECORDS } = latestComics;
-    const RECORDS_PER_PAGE = offset ? parseInt(offset, 10) : 100;
-    const TOTAL_PAGES = Math.ceil(TOTAL_RECORDS / RECORDS_PER_PAGE);
-    const PAGE_NUMBER = page ? parseInt(page, 10) : 1;
 
     // This might be a redirect
     const data = PAGE_NUMBER < TOTAL_PAGES
@@ -73,7 +83,7 @@ async function main(request: ServerRequest) {
       })
       : [latestComics];
 
-    const body = JSON.stringify(data.filter(Boolean));
+    const body = JSON.stringify({ ...payload, comics: data.filter(Boolean) });
     const response = {
       body,
       headers,

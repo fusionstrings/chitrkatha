@@ -1,3 +1,102 @@
-body{
-	color: grey;
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bangers&family=Gloria+Hallelujah&family=Homemade+Apple&family=Nanum+Brush+Script&family=Permanent+Marker&family=Sedgwick+Ave&display=swap');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Gloria Hallelujah', cursive;
+    /* font-family: 'Nanum Brush Script', cursive; */
+    /* font-family: 'Homemade Apple', cursive; */
+    line-height: 1.2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+h1 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+h2 {
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+h3 {
+    font-family: 'Amatic SC', cursive;
+}
+
+h4,
+h5,
+h6 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+main {
+    margin-bottom: 100px;
+}
+.logo {
+    font-family: 'Bangers', cursive;
+    font-size: 8rem;
+    line-height: 8rem;
+    border-bottom: 25px solid aqua;
+}
+
+.logo a {
+    color: black;
+    text-decoration: none;
+}
+
+[data-layout='grid'] {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+    grid-gap: 20px;
+}
+[data-layout='grid'] img {
+    max-height: 200px;
+}
+.grid[data-layout='frame'] {
+    display: flex;
+}
+.comics-strip {
+    text-align: center;
+}
+
+.comics-strip img {
+    max-width: 100%;
+}
+
+.strip-title {
+    font-size: 2rem;
+}
+
+footer {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-top: 5px solid black;
+}
+
+.pagination {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.pagination li {
+    width: 30px;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.pagination li.active {
+    border: 1px dotted aqua;
 }

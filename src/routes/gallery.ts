@@ -31,7 +31,7 @@ async function main(request: ServerRequest) {
     };
     return response;
   } catch (error) {
-    return { status: 500, body: "500" };
+    return { status: 500 };
   }
 }
 
