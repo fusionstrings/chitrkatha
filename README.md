@@ -15,6 +15,13 @@ A [XKCD](https://xkcd.com/) UX and [API](https://xkcd.com/json.html) remix.
 | `/api/comics?page=1&offset=100`    | N/A                | `application/json;charset=utf-8` |
 | `/api/comics/:comics-number`       | N/A                | `application/json;charset=utf-8` |
 
-### Start
+### Build
+`docker build --pull --rm -f "Dockerfile" -t lightsaber:latest "."`
 
-`deno run --allow-all ./start.ts`
+### Start
+Default port `1729`
+
+- `deno run --allow-all ./start.ts`
+- `docker run --rm -it  --env-file=.env -p 8080:8080 abcd:latest`
+- `docker run --rm -it  --env PORT=8080 -p 8080:8080 abcd:latest`
+

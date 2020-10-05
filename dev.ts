@@ -1,6 +1,6 @@
 function main(args: string[]): Deno.Process {
 
-  const [mode = "dev"] = args;
+  const [mode = "production"] = args;
 
   console.log(`started in ${mode} mode at ${new Date().toUTCString()}`);
 
@@ -13,6 +13,7 @@ function main(args: string[]): Deno.Process {
       "--allow-net",
       "--allow-read",
       "--allow-env",
+      "--watch",
       "src/server.ts",
     ],
   });
