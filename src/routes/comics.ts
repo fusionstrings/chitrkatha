@@ -1,5 +1,6 @@
 import type { ServerRequest } from "../../deps.ts";
 import { removeSlashes } from "../functions.ts";
+import { PROTOCOL } from "../constants.ts";
 import Render from "./../components/render.tsx";
 import Comics from "./../components/comics.tsx";
 
@@ -15,7 +16,7 @@ async function main(request: ServerRequest) {
 
     // Assuming `http`
     //const [_, query] = getPathQuery(request.url);
-    const API_URL = `http://${host}/api/${removeSlashes(request.url)}`;
+    const API_URL = `${PROTOCOL}://${host}/api/${removeSlashes(request.url)}`;
 
     const data = await fetch(API_URL);
     const comics = await data.json();

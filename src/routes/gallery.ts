@@ -1,4 +1,5 @@
 import type { ServerRequest } from "../../deps.ts";
+import { PROTOCOL } from "../constants.ts";
 import Render from "./../components/render.tsx";
 import Gallery from "./../components/gallery.tsx";
 
@@ -13,7 +14,7 @@ async function main(request: ServerRequest) {
     const host = request.headers.get("host");
 
     // Assuming `http`
-    const API_URL = new URL(`http://${host}/api/comics`);
+    const API_URL = new URL(`${PROTOCOL}://${host}/api/comics`);
 
     const data = await fetch(API_URL);
     const comics = await data.json();

@@ -1,5 +1,4 @@
 function main(args: string[]): Deno.Process {
-
   const [mode = "production"] = args;
 
   console.log(`started in ${mode} mode at ${new Date().toUTCString()}`);

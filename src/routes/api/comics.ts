@@ -1,4 +1,5 @@
 import type { ServerRequest } from "../../../deps.ts";
+import { PROTOCOL } from "../../constants.ts";
 import { removePathQuery, removeSlashes } from "../../functions.ts";
 
 async function fetchComics(comicsNumber: string) {
@@ -20,7 +21,7 @@ async function main(request: ServerRequest) {
     const host = request.headers.get("host");
 
     // Assuming `http`
-    const url = new URL(`http://${host}${request.url}`);
+    const url = new URL(`${PROTOCOL}://${host}${request.url}`);
     const page = url.searchParams.get("page");
     const offset = url.searchParams.get("offset");
 

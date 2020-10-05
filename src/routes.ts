@@ -1,9 +1,10 @@
 import type { ServerRequest } from "../deps.ts";
+import { PROTOCOL } from "./constants.ts";
 
 async function main(request: ServerRequest) {
   try {
     const host = request.headers.get("host");
-    const defaultURL = `http://${host}/comics`;
+    const defaultURL = `${PROTOCOL}://${host}/comics`;
 
     const headers = new Headers();
     headers.set("Location", defaultURL);
