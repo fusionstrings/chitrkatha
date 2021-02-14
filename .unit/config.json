@@ -1,0 +1,27 @@
+{
+	"listeners": {
+		"*:80": {
+			"pass": "routes"
+		}
+	},
+	"routes": [
+		{
+			"action": {
+				"share": "/var/public/",
+				"fallback": {
+					"pass": "upstreams/app"
+				}
+			}
+		}
+	],
+	"upstreams": {
+        "app": {
+            "servers": {
+                "0.0.0.0:1729": { },
+                "0.0.0.0:8787": {
+                    "weight": 0.5
+                }
+            }
+        }
+    }
+}
