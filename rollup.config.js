@@ -6,27 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 
 const production = !process.env.ROLLUP_WATCH;
-
-function serve() {
-	let server;
-
-	function toExit() {
-		if (server) server.kill(0);
-	}
-
-	return {
-		writeBundle() {
-			if (server) return;
-			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-				stdio: ['ignore', 'inherit', 'inherit'],
-				shell: true
-			});
-
-			process.on('SIGTERM', toExit);
-			process.on('exit', toExit);
-		}
-	};
-}
+const OUTPUT_DIR = production ? 'public' : 'dist';
 
 export default {
 	input: 'src/main.js',
@@ -34,7 +14,7 @@ export default {
 		sourcemap: true,
 		format: 'esm',
 		name: 'app',
-		dir: 'dist/scripts'
+		dir: `${OUTPUT_DIR}/scripts`
 	},
 	plugins: [
 		svelte({
