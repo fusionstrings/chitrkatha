@@ -25,7 +25,8 @@
 		"bungcip.better-toml",
 		"vadimcn.vscode-lldb",
 		"mutantdino.resourcemonitor",
-		"denoland.vscode-deno"
+		"denoland.vscode-deno",
+		"svelte.svelte-vscode"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [80, 443, 8080, 8787],
