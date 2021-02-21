@@ -2,5 +2,5 @@ name = "chitrkatha"
 type = "webpack"
 account_id = ""
 workers_dev = true
-route = "*xkcd.chitrkatha.com/api*"
-zone_id = "$zoneId"
+route = ""
+zone_id = ""
