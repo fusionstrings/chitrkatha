@@ -7,6 +7,8 @@
 
 <main data-layout="grid">
   {#each Array(comicsPerPage) as _, comics}
-    <Comics id={(latestComics.num - ((page - 1)* comicsPerPage) )- comics} />
+    {#if latestComics.num - (page - 1) * comicsPerPage - comics > 0}
+      <Comics id={latestComics.num - (page - 1) * comicsPerPage - comics} />
+    {/if}
   {/each}
 </main>
