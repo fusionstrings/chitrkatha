@@ -1,0 +1,20 @@
+<script>
+  import fetchComics from './functions/xkcd.js'
+  import Header from './components/header.svelte'
+  import Main from './components/main.svelte'
+  import Footer from './components/footer.svelte'
+
+  const url = new URL(window.location)
+  const page = url.searchParams.get('page') || 1
+  const offset = url.searchParams.get('offset') || 20
+</script>
+
+<Header />
+{#await fetchComics()}
+  <p>...waiting</p>
+{:then latestComics}
+  <Main comicsPerPage={parseInt(offset, 10)} latestComics={latestComics} page={page} totalComics={latestComics.num} totalPages={Math.ceil(latestComics.num / offset)} pageNumber={parseInt(page, 10)} />
+  <Footer  comicsPerPage={parseInt(offset, 10)} latestComics={latestComics} page={page} totalComics={latestComics.num} totalPages={Math.ceil(latestComics.num / offset)} pageNumber={parseInt(page, 10)} />
+{:catch error}
+  <p>An error occurred!</p>
+{/await}

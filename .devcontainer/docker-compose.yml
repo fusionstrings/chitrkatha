@@ -45,6 +45,7 @@ services:
     volumes:
       - ../.unit/config.json:/docker-entrypoint.d/config.json:ro
       - ../public/:/var/public/:ro
+      - ../dist/:/var/dist/:ro
     ports:
       - 80:80
       - 443:443

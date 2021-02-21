@@ -9,19 +9,24 @@
 			"action": {
 				"share": "/var/public/",
 				"fallback": {
-					"pass": "upstreams/app"
+					"share": "/var/dist/",
+					"fallback": {
+						"pass": "upstreams/edge"
+					}
 				}
 			}
 		}
 	],
 	"upstreams": {
-        "app": {
-            "servers": {
-                "0.0.0.0:1729": { },
-                "0.0.0.0:8787": {
-                    "weight": 0.5
-                }
-            }
-        }
-    }
+		"edge": {
+			"servers": {
+				"0.0.0.0:8787": {}
+			}
+		},
+		"render": {
+			"servers": {
+				"0.0.0.0:1729": {}
+			}
+		}
+	}
 }
