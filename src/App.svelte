@@ -7,13 +7,14 @@
   const url = new URL(window.location)
   const page = url.searchParams.get('page') || 1
   const offset = url.searchParams.get('offset') || 20
+  const comics = url.searchParams.get('comics')
 </script>
 
 <Header />
 {#await fetchComics()}
   <p>...waiting</p>
 {:then latestComics}
-  <Main comicsPerPage={parseInt(offset, 10)} latestComics={latestComics} page={page} totalComics={latestComics.num} totalPages={Math.ceil(latestComics.num / offset)} pageNumber={parseInt(page, 10)} />
+  <Main comicsPerPage={parseInt(offset, 10)} latestComics={latestComics} page={page} totalComics={latestComics.num} totalPages={Math.ceil(latestComics.num / offset)} pageNumber={parseInt(page, 10)} comics={comics} />
   <Footer  comicsPerPage={parseInt(offset, 10)} latestComics={latestComics} page={page} totalComics={latestComics.num} totalPages={Math.ceil(latestComics.num / offset)} pageNumber={parseInt(page, 10)} />
 {:catch error}
   <p>An error occurred!</p>
