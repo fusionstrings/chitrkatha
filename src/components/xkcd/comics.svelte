@@ -1,5 +1,5 @@
 <script>
-  import fetchComics from '../functions/xkcd.js'
+  import fetchComics from '../../functions/xkcd.js'
   export let id = 'latest'
 </script>
 
@@ -8,7 +8,7 @@
 {:then data}
   <figure class="comics-strip" key={data.num}>
     <h3 class="strip-title">{data.safe_title}</h3>
-    <a href={`/?comics=${data.num}`}>
+    <a href={`?comics=${data.num}`}>
       <img loading="lazy" src={data.img} alt={data.alt} />
     </a>
     <div class="transcript">{data.transcript}</div>

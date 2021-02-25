@@ -1,8 +1,8 @@
 <script>
   import fetchComics from './functions/xkcd.js'
-  import Header from './components/header.svelte'
-  import Main from './components/main.svelte'
-  import Footer from './components/footer.svelte'
+  import Header from './components/xkcd/header.svelte'
+  import Main from './components/xkcd/main.svelte'
+  import Footer from './components/xkcd/footer.svelte'
 
   const url = new URL(window.location)
   const page = url.searchParams.get('page') || 1

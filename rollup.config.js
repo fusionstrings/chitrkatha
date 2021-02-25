@@ -9,7 +9,7 @@ const production = !process.env.ROLLUP_WATCH;
 const OUTPUT_DIR = production ? 'public' : 'dist';
 
 export default {
-	input: 'src/main.js',
+	input: ['src/chitrkatha.js', 'src/xkcd.js'],
 	output: {
 		sourcemap: true,
 		format: 'esm',

@@ -6,12 +6,20 @@
 	},
 	"routes": [
 		{
+			"match": {
+				"uri": "/api/*"
+			},
 			"action": {
-				"share": "/var/public/",
+				"pass": "upstreams/edge"
+			}
+		},
+		{
+			"action": {
+				"share": "/var/dist/",
 				"fallback": {
-					"share": "/var/dist/",
+					"share": "/var/public/",
 					"fallback": {
-						"pass": "upstreams/edge"
+						"pass": "upstreams/render"
 					}
 				}
 			}
