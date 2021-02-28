@@ -19,6 +19,7 @@ const CACHE_NAME = 'offline';
 const OFFLINE_URL = 'offline.html';
 const filesToCache = [
   OFFLINE_URL,
+	'/images/chitrkatha-minimal-logo.svg',
   '/apple-touch-icon.png',
   '/favicon-32x32.png',
   '/favicon-16x16.png',
