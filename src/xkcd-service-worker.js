@@ -19,6 +19,9 @@ const CACHE_NAME = 'offline';
 const OFFLINE_URL = '/xkcd/offline.html';
 const filesToCache = [
 	OFFLINE_URL,
+	'maskable_icon.png',
+	'/android-chrome-192x192.png',
+	'/android-chrome-512x512.png',
 	'/images/chitrkatha-minimal-logo.svg',
 	'/apple-touch-icon.png',
 	'/favicon-32x32.png',
