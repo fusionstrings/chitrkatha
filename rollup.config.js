@@ -8,12 +8,11 @@ import css from 'rollup-plugin-css-only';
 const production = !process.env.ROLLUP_WATCH;
 const OUTPUT_DIR = production ? 'public' : 'dist';
 
-export default {
+export default [{
 	input: ['src/chitrkatha.js', 'src/xkcd.js'],
 	output: {
 		sourcemap: true,
 		format: 'esm',
-		name: 'app',
 		dir: `${OUTPUT_DIR}/scripts`
 	},
 	plugins: [
@@ -54,4 +53,39 @@ export default {
 	watch: {
 		clearScreen: false
 	}
-};
+},
+{
+	input: ['src/chitrkatha-service-worker.js', 'src/xkcd-service-worker.js'],
+	output: {
+		sourcemap: true,
+		format: 'esm',
+		dir: `${OUTPUT_DIR}`
+	},
+	plugins: [
+
+		// If you have external dependencies installed from
+		// npm, you'll most likely need these plugins. In
+		// some cases you'll need additional configuration -
+		// consult the documentation for details:
+		// https://github.com/rollup/plugins/tree/master/packages/commonjs
+		resolve({
+			browser: true
+		}),
+		commonjs(),
+
+		// In dev mode, call `npm run start` once
+		// the bundle has been generated
+		// !production && serve(),
+
+		// Watch the `public` directory and refresh the
+		// browser on changes when not in production
+		// !production && livereload('public'),
+
+		// If we're building for production (npm run build
+		// instead of npm run dev), minify
+		production && terser()
+	],
+	watch: {
+		clearScreen: false
+	}
+}];

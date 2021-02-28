@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte'
   import fetchComics from './functions/xkcd.js'
   import Header from './components/xkcd/header.svelte'
   import Main from './components/xkcd/main.svelte'
@@ -7,7 +8,14 @@
   const url = new URL(window.location)
   const page = url.searchParams.get('page') || 1
   const offset = url.searchParams.get('offset') || 20
-  const comics = url.searchParams.get('comics')
+  const comics = url.searchParams.get('comics')  
+  onMount(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/xkcd-service-worker.js')
+      })
+    }
+  })
 </script>
 
 <Header />
