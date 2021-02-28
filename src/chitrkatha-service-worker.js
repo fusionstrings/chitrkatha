@@ -19,10 +19,10 @@ const CACHE_NAME = 'offline';
 const OFFLINE_URL = 'offline.html';
 const filesToCache = [
   OFFLINE_URL,
-	'maskable_icon.png',
-	'/android-chrome-192x192.png',
-	'/android-chrome-512x512.png',
-	'/images/chitrkatha-minimal-logo.svg',
+  'maskable_icon.png',
+  '/android-chrome-192x192.png',
+  '/android-chrome-512x512.png',
+  '/images/chitrkatha-minimal-logo.svg',
   '/apple-touch-icon.png',
   '/favicon-32x32.png',
   '/favicon-16x16.png',
@@ -54,6 +54,10 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+
+  if (event.request.cache === 'only-if-cached' && e.request.mode !== 'same-origin') {
+    return;
+  }
   // We only want to call event.respondWith() if this is a navigation request
   // for an HTML page.
   if (event.request.mode === 'navigate') {
