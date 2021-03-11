@@ -4,6 +4,8 @@ import resolve from '@rollup/plugin-node-resolve';
 // import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import replace from '@rollup/plugin-replace';
+import workbox from 'rollup-plugin-workbox-inject';
 
 const production = !process.env.ROLLUP_WATCH;
 const OUTPUT_DIR = production ? 'public' : 'dist';
@@ -16,6 +18,9 @@ export default [{
 		dir: `${OUTPUT_DIR}/scripts`
 	},
 	plugins: [
+		replace({
+			'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development'),
+		}),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
@@ -55,13 +60,23 @@ export default [{
 	}
 },
 {
-	input: ['src/chitrkatha-service-worker.js', 'src/xkcd-service-worker.js'],
+	input: ["src/service-worker.js"],
 	output: {
 		sourcemap: true,
 		format: 'esm',
 		dir: `${OUTPUT_DIR}`
 	},
 	plugins: [
+		replace({
+			'process.env.NODE_ENV': JSON.stringify(process.env.ROLLUP_WATCH ? 'development' : 'production'),
+		}),
+		workbox({
+			globDirectory: 'public',
+			globPatterns: [
+				'**/*.*'
+			],
+			// ...any other options here...
+		}),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
