@@ -1,13 +1,13 @@
-FROM hayd/deno:alpine-1.7.2
+FROM hayd/deno:alpine-1.8.0
 
-EXPOSE 1993
+EXPOSE 1729
 
 WORKDIR /app
 
 USER deno
 
 COPY deps.ts .
-RUN deno cache deps.ts
+# RUN deno cache deps.ts
 
 ADD . .
 RUN deno cache start.ts

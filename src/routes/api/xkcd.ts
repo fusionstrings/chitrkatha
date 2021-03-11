@@ -9,6 +9,7 @@ async function fetchComics(comicsNumber: string) {
     }info.0.json`;
     // https://xkcd.com/614/info.0.json
     const response = await fetch(url);
+    // const body = new Uint8Array(await response.arrayBuffer());
     const json = await response.json();
     return json;
   } catch (error) {
@@ -31,11 +32,11 @@ async function main(request: ServerRequest) {
     headers.set("Content-Type", "application/json; charset=utf-8");
 
     const path = removeSlashes(removePathQuery(request.url));
-    const comicsNumber = removeSlashes(path.split("api/comics")[1]);
+    const comicsNumber = removeSlashes(path.split("api/xkcd")[1]);
 
     const latestComics = await fetchComics("");
     const { num: TOTAL_RECORDS } = latestComics;
-    const RECORDS_PER_PAGE = offset ? parseInt(offset, 10) : 100;
+    const RECORDS_PER_PAGE = offset ? parseInt(offset, 10) : 10;
     const TOTAL_PAGES = Math.ceil(TOTAL_RECORDS / RECORDS_PER_PAGE);
     const PAGE_NUMBER = page ? parseInt(page, 10) : 1;
 
@@ -70,7 +71,7 @@ async function main(request: ServerRequest) {
               : TOTAL_RECORDS - (RECORDS_PER_PAGE * (PAGE_NUMBER - 1))) -
             index,
         )
-          .map(async (comicsNumber: number) => {
+          .map((comicsNumber: number) => {
             try {
               return fetchComics(`${comicsNumber}`);
             } catch (error) {

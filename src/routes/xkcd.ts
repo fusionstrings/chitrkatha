@@ -2,7 +2,7 @@ import type { ServerRequest } from "../../deps.ts";
 import { removeSlashes } from "../functions.ts";
 import { PROTOCOL } from "../constants.ts";
 import Render from "./../components/render.tsx";
-import Comics from "./../components/comics.tsx";
+import XKCD from "./../components/xkcd.tsx";
 
 async function main(request: ServerRequest) {
   try {
@@ -24,9 +24,10 @@ async function main(request: ServerRequest) {
     const body = await Render(
       {
         props: { ...comics },
-        Component: Comics,
+        Component: XKCD,
       },
     );
+    
     const response = {
       body,
       headers,

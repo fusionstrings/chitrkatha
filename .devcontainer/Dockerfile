@@ -7,7 +7,7 @@ RUN cargo install wrangler --version 1.13.0
 # curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.0.0
 ENV DENO_INSTALL=/deno
 RUN mkdir -p /deno \
-    && curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.7.5 \
+    && curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.8.0\
     && chown -R vscode /deno
 
 ENV PATH=${DENO_INSTALL}/bin:${PATH} \

@@ -1,10 +1,7 @@
-export {
-  listenAndServe,
-  ServerRequest,
-} from "https://deno.land/std@0.73.0/http/server.ts";
+export { listenAndServe, ServerRequest } from "http/server.ts";
 
-export { serveFile } from "https://deno.land/std@0.73.0/http/file_server.ts";
-export { default as React } from 'https://esm.sh/react@17.0.1';
-export { default as ReactDOMServer } from "https://esm.sh/react-dom@17.0.1/server.js";
-
+export { serveFile } from "http/file_server.ts";
+export { default as React } from "react";
+export { default as ReactDOMServer } from "react-dom/server.js";
+export { exists } from "fs";
 export const { cwd } = Deno;

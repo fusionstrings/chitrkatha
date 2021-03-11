@@ -9,7 +9,7 @@ body {
     /* font-family: 'Homemade Apple', cursive; */
     line-height: 1.2rem;
 }
-chitrkatha-page{
+chitrkatha-page, .chitrkatha-page{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,7 +95,7 @@ main {
     padding: 5px 10px;
 }
 
-chitrkatha-footer{
+chitrkatha-footer, .chitrkatha-footer{
     position: fixed;
     bottom: 0;
     width: 100vw;

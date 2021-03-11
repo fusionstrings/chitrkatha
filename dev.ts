@@ -1,5 +1,8 @@
+import { parse } from "https://deno.land/std@0.90.0/flags/mod.ts";
+
 function main(args: string[]): Deno.Process {
-  const [mode = "production"] = args;
+
+  const {mode = "production", file = "src/server.ts"} = parse(args);
 
   console.log(`started in ${mode} mode at ${new Date().toUTCString()}`);
 
@@ -7,13 +10,14 @@ function main(args: string[]): Deno.Process {
     cmd: [
       "deno",
       "run",
-      // "--importmap=importmap.json", // watch is not compatible with this
+      "--import-map=deno.importmap",
       "--unstable",
       "--allow-net",
       "--allow-read",
       "--allow-env",
+      "--reload",
       "--watch",
-      "src/server.ts",
+      `${file}`,
     ],
   });
 }

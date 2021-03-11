@@ -32,6 +32,22 @@
 				"--allow-all"
 			],
 			"attachSimplePort": 9229
+		},
+		{
+			"name": "Deno Current file",
+			"type": "pwa-node",
+			"request": "launch",
+			"cwd": "${workspaceFolder}",
+			"runtimeExecutable": "deno",
+			"runtimeArgs": [
+				"run",
+				"--inspect-brk",
+				"--import-map=deno.importmap",
+				"--unstable",
+				"-A",
+				"${file}"
+			],
+			"attachSimplePort": 9229
 		}
 	]
 }
