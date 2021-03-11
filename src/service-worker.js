@@ -1,4 +1,4 @@
-import { skipWaiting } from 'workbox-core';
+import { skipWaiting, clientsClaim } from 'workbox-core';
 import * as navigationPreload from 'workbox-navigation-preload';
 import { cleanupOutdatedCaches, matchPrecache, precacheAndRoute } from 'workbox-precaching';
 import { registerRoute, setCatchHandler, setDefaultHandler } from 'workbox-routing';
@@ -11,7 +11,7 @@ import {
 // Used for filtering matches based on status code, header, or both
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 // Used to limit entries in cache, remove entries after a certain period of time
-import { ExpirationPlugin } from 'workbox-expiration';
+// import { ExpirationPlugin } from 'workbox-expiration';
 
 precacheAndRoute(self.__WB_MANIFEST);
 cleanupOutdatedCaches();
@@ -75,10 +75,10 @@ registerRoute(
 				statuses: [200],
 			}),
 			// Don't cache more than 5000 items, and expire them after 30 days
-			new ExpirationPlugin({
-				maxEntries: 5000,
-				maxAgeSeconds: 60 * 60 * 24 * 30, // 30 Days
-			}),
+			// new ExpirationPlugin({
+			// 	maxEntries: 5000,
+			// 	maxAgeSeconds: 60 * 60 * 24 * 30, // 30 Days
+			// }),
 		],
 	}),
 );
@@ -100,3 +100,4 @@ setCatchHandler(({ url, event }) => {
 });
 
 skipWaiting();
+clientsClaim();
