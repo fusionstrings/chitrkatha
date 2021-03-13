@@ -31,7 +31,7 @@ h2 {
     font-family: 'Sedgwick Ave', cursive;
 }
 
-h3 {
+h3, .strip-title{
     font-family: 'Amatic SC', cursive;
 }
 
