@@ -12,4 +12,4 @@ COPY deps.ts .
 ADD . .
 RUN deno cache start.ts
 
-CMD ["run", "--unstable", "--allow-all", "start.ts"]
+CMD ["run", "--import-map=deno.importmap", "--unstable", "--allow-all", "start.ts"]
