@@ -1,4 +1,4 @@
-import XKCD from './xkcd.svelte';
+import XKCD from './components/xkcd.svelte';
 
 const app = new XKCD({
 	target: document.body,

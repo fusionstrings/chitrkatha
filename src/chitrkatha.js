@@ -1,4 +1,4 @@
-import Chitrkatha from './chitrkatha.svelte';
+import Chitrkatha from './components/chitrkatha.svelte';
 
 const app = new Chitrkatha({
 	target: document.body,

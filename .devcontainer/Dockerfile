@@ -2,12 +2,12 @@
 
 FROM mcr.microsoft.com/vscode/devcontainers/rust:0-1
 
-RUN cargo install wrangler --version 1.13.0
+RUN cargo install wrangler --version 1.15.0
 # RUN cargo install deno --version 1.7.2
 # curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.0.0
 ENV DENO_INSTALL=/deno
 RUN mkdir -p /deno \
-    && curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.8.0\
+    && curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.8.2\
     && chown -R vscode /deno
 
 ENV PATH=${DENO_INSTALL}/bin:${PATH} \

@@ -6,7 +6,6 @@ import XKCD from "./../components/xkcd.tsx";
 
 async function main(request: ServerRequest) {
   try {
-    //const { url } = request;
     const headers = new Headers();
     headers.set("Date", new Date().toUTCString());
     headers.set("Connection", "keep-alive");
