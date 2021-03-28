@@ -1,4 +1,4 @@
-FROM hayd/deno:alpine-1.8.0
+FROM hayd/deno:alpine-1.8.2
 
 EXPOSE 1729
 

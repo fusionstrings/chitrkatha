@@ -26,7 +26,9 @@
 		"vadimcn.vscode-lldb",
 		"mutantdino.resourcemonitor",
 		"denoland.vscode-deno",
-		"svelte.svelte-vscode"
+		"svelte.svelte-vscode",
+		"jkchao.vscode-excalidraw-plugin",
+		"brijeshb42.vscode-excalidraw"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [80, 443, 8080, 8787],
