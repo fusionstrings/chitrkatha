@@ -15,7 +15,7 @@
 on:
   push:
     branches:
-      - [ creation ]
+      - creation
 
 name: GCR Build and Deploy a Container
 env:
