@@ -33,12 +33,12 @@ async function serveRequest(
       } catch (error) {
         try {
           // Try if scoped route handler exists
-          if (url.startsWith("/comics")) {
-            const module = await import(`./routes/comics.ts`);
+          if (url.startsWith("/xkcd")) {
+            const module = await import(`./routes/xkcd.ts`);
             const response = await module.default(request);
             request.respond(response);
-          } else if (url.startsWith("/api/comics")) {
-            const module = await import(`./routes/api/comics.ts`);
+          } else if (url.startsWith("/api/xkcd")) {
+            const module = await import(`./routes/api/xkcd.ts`);
             const response = await module.default(request);
             request.respond(response);
           } else if (url.startsWith("/api/")) {
@@ -62,7 +62,7 @@ async function serveRequest(
 
 type IRequestHandler = (req: ServerRequest) => void;
 
-async function main(requestHandler: IRequestHandler) {
+function main(requestHandler: IRequestHandler) {
   // 1729
   const port = Number(Deno.env.get("PORT") || 1729);
   const address = { port };

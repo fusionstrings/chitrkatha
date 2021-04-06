@@ -1,4 +1,4 @@
-import { cwd, serveFile, ServerRequest } from "../deps.ts";
+import { cwd, serveFile, ServerRequest, exists } from "../deps.ts";
 
 function getPathQuery(path: string) {
   return path.split("?");
@@ -32,7 +32,14 @@ async function serveStatic(request: ServerRequest) {
   try {
     const { url } = request;
     const path = `${cwd()}/public${url}`;
-    return serveFile(request, path);
+    const fileExists = await exists(path);
+    const fileInfo = await Deno.stat(path);
+    if(fileExists && !fileInfo.isDirectory){
+      return serveFile(request, path);
+    }
+
+    throw new Error(`Path doesn't exist or is a directory`);
+
   } catch (error) {
     throw new Error(error);
   }

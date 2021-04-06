@@ -1,0 +1,10 @@
+{
+	"imports": {
+		"flags": "https://deno.land/std@0.91.0/flags/mod.ts",
+		"fs": "https://deno.land/std@0.91.0/fs/mod.ts",
+		"http/": "https://deno.land/std@0.91.0/http/",
+		"react": "https://esm.sh/react@17.0.1",
+		"react-dom": "https://esm.sh/react-dom@17.0.1",
+		"react-dom/": "https://esm.sh/react-dom@17.0.1/"
+	}
+}

@@ -4,15 +4,20 @@ html,
 body {
     margin: 0;
     padding: 0;
-}
-
-body {
     font-family: 'Gloria Hallelujah', cursive;
     /* font-family: 'Nanum Brush Script', cursive; */
     /* font-family: 'Homemade Apple', cursive; */
     line-height: 1.2rem;
 }
-
+chitrkatha-page, .chitrkatha-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    min-height: 100vh;
+    background: #FFD700;
+}
 header {
     display: flex;
     justify-content: space-evenly;
@@ -26,7 +31,7 @@ h2 {
     font-family: 'Sedgwick Ave', cursive;
 }
 
-h3 {
+h3, .strip-title{
     font-family: 'Amatic SC', cursive;
 }
 
@@ -51,6 +56,10 @@ main {
     text-decoration: none;
 }
 
+.logo-chitrkatha img{
+    filter: drop-shadow(0 25px 1.75rem rgba(0,0,0,0.5));
+
+}
 [data-layout='grid'] {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
@@ -61,6 +70,35 @@ main {
 }
 .grid[data-layout='frame'] {
     display: flex;
+}
+[data-layout='hero'] {
+    text-align: center;
+    max-width: 500px;
+}
+
+[data-layout='hero'] h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    line-height: 3.2rem;
+}
+[data-layout='hero'] nav ul {
+    font-family: 'Amatic SC', cursive;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+}
+
+[data-layout='hero'] nav a{
+    background: red;
+    color: white;
+    padding: 5px 10px;
+}
+
+chitrkatha-footer, .chitrkatha-footer{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
 }
 .comics-strip {
     text-align: center;
@@ -75,10 +113,11 @@ main {
 }
 
 footer {
-    position: sticky;
-    bottom: 0;
-    background: white;
+    /* position: sticky;
+    bottom: 0; */
+    /* background: white; */
     border-top: 5px solid black;
+    text-align: center;
 }
 
 .pagination {

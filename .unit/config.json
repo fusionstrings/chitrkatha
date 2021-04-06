@@ -1,0 +1,40 @@
+{
+	"listeners": {
+		"*:80": {
+			"pass": "routes"
+		}
+	},
+	"routes": [
+		{
+			"match": {
+				"uri": ["/api/*", "/xkcd/api/*"]
+			},
+			"action": {
+				"pass": "upstreams/edge"
+			}
+		},
+		{
+			"action": {
+				"share": "/var/dist/",
+				"fallback": {
+					"share": "/var/public/",
+					"fallback": {
+						"pass": "upstreams/render"
+					}
+				}
+			}
+		}
+	],
+	"upstreams": {
+		"edge": {
+			"servers": {
+				"0.0.0.0:8787": {}
+			}
+		},
+		"render": {
+			"servers": {
+				"0.0.0.0:1729": {}
+			}
+		}
+	}
+}

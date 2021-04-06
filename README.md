@@ -1,8 +1,8 @@
 [![Run on Repl.it](https://repl.it/badge/github/fusionstrings/chitrkatha)](https://repl.it/github/fusionstrings/chitrkatha)
-
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Yfusionstrings/chitrkatha)
 # Future of accessible Comics, Stories and Art
 
-## ABCD
+## XKCD
 
 A [XKCD](https://xkcd.com/) UX and [API](https://xkcd.com/json.html) remix.
 
@@ -10,14 +10,15 @@ A [XKCD](https://xkcd.com/) UX and [API](https://xkcd.com/json.html) remix.
 
 | Route                              | Layout             | Content-Type                     |
 | ---------------------------------- | ------------------ | -------------------------------- |
-| `/comics` OR `/comics?page=1&offset=100` | Gallery Pagination | `text/html; charset=utf-8`       |
-| `/comics/:comics-number`           | Comics stand alone | `text/html; charset=utf-8`       |
-| `/api/comics?page=1&offset=100`    | N/A                | `application/json;charset=utf-8` |
-| `/api/comics/:comics-number`       | N/A                | `application/json;charset=utf-8` |
+| `/xkcd` OR `/xkcd?page=1&offset=100` | Gallery Pagination | `text/html; charset=utf-8`       |
+| `/xkcd/:comics-number`           | Comics stand alone | `text/html; charset=utf-8`       |
+| `/api/xkcd?page=1&offset=100`    | N/A                | `application/json;charset=utf-8` |
+| `/api/xkcd/:comics-number`       | N/A                | `application/json;charset=utf-8` |
 
 ### Start
-Default port `1729`
-`deno run --allow-all ./start.ts`
+Default port `1729` or through environment variable `PORT`
+- `deno run --allow-all ./start.ts` *Production*
+- `deno run --allow-all ./dev.ts` *Development*
 
 ### Run using Docker
 - `docker run --rm -it  --env PORT=8080 DENO_ENV=production -p 8080:8080 fusionstrings/abcd:v0.1.0`
@@ -29,16 +30,16 @@ Default port `1729`
 ### Make it real
 - [x] A minimal dev server #getstart
 - [x] Working API #makeitwork
-- [ ] Make it look good
-- [ ] Improve UX
+- [x] Make it look good
+- [] Improve UX
 - [ ] Use [Seam Carving](https://crates.delbertbeta.cc/crates/seamcarving) to create thumbnails.
 - [ ] Move to a production grade server
 
 ### Add some drama to the story
-- [ ] Add service worker
-- [ ] Add client side JS
-- [ ] Add Landing Page
-- [ ] Use cloudflare as edge proxy
+- [x] Add service worker
+- [x] Add client side JS
+- [x] Add Landing Page
+- [x] Use cloudflare as edge proxy
 - [ ] Use cloudflare analytics to customise user and developer experience
 - [ ] Adapt the project for [Saturday Morning Breakfast Cereal](https://www.smbc-comics.com/)
 - [ ] Analyse and optimise component reusability across Server/Edge/Service Worker/Browser
