@@ -14,7 +14,7 @@
 
 on: pull_request
 
-name: Build and Deploy a Container on pull_request
+name: GCR Build and Deploy a Container on pull_request
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   SERVICE: chitrkatha-${{ github.event.number }}

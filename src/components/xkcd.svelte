@@ -1,9 +1,9 @@
 <script>
   import { onMount } from 'svelte'
-  import fetchComics from './functions/xkcd.js'
-  import Header from './components/xkcd/header.svelte'
-  import Main from './components/xkcd/main.svelte'
-  import Footer from './components/xkcd/footer.svelte'
+  import fetchComics from '../functions/xkcd.js'
+  import Header from './xkcd/header.svelte'
+  import Main from './xkcd/main.svelte'
+  import Footer from './xkcd/footer.svelte'
 
   const url = new URL(window.location)
   const page = url.searchParams.get('page') || 1

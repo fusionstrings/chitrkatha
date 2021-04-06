@@ -15,9 +15,9 @@
 on:
   push:
     branches:
-      - river
+      - [ creation ]
 
-name: Build and Deploy a Container
+name: GCR Build and Deploy a Container
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   SERVICE: chitrkatha

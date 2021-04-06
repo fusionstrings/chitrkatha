@@ -1,8 +1,8 @@
 <script>
   import { onMount } from 'svelte'
-  import Header from './components/chitrkatha/header.svelte'
-  import Main from './components/chitrkatha/main.svelte'
-  import Footer from './components/chitrkatha/footer.svelte'
+  import Header from './chitrkatha/header.svelte'
+  import Main from './chitrkatha/main.svelte'
+  import Footer from './chitrkatha/footer.svelte'
 
   onMount(() => {
     if ('serviceWorker' in navigator) {
