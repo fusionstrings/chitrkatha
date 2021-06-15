@@ -17,12 +17,13 @@ A [XKCD](https://xkcd.com/) UX and [API](https://xkcd.com/json.html) remix.
 
 ### Start
 Default port `1729` or through environment variable `PORT`
-- `deno run --allow-all ./start.ts` *Production*
+- `deno run --import-map=deno.importmap --unstable --allow-all ./start.ts` *Production*
 - `deno run --allow-all ./dev.ts` *Development*
 
 ### Run using Docker
 - `docker run --rm -it  --env PORT=8080 DENO_ENV=production -p 8080:8080 fusionstrings/abcd:v0.1.0`
-
+- `docker run --rm -it --env PORT=8080 DENO_ENV=production -p 8080:8080 xabcd:latest`
+- `docker run --rm -it  -p 1993:1993/tcp xabcd:latest`
 ### Build using Docker
 
 `docker build --pull --rm -f "Dockerfile" -t abcd:latest "."`

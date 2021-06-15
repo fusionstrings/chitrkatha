@@ -40,10 +40,11 @@ services:
     
   # You can include other services not opened by VS Code as well
   unit:
-    image: nginx/unit:1.22.0-node15
+    image: nginx/unit:1.23.0-node15
     restart: unless-stopped
     volumes:
       - ../.unit/config.json:/docker-entrypoint.d/config.json:ro
+      - ../.unit/ssl/chain.pem:/docker-entrypoint.d/chain.pem:ro
       - ../public/:/var/public/:ro
       - ../dist/:/var/dist/:ro
     ports:

@@ -2,28 +2,14 @@
 	"listeners": {
 		"*:80": {
 			"pass": "routes"
-		},
-		"*:443": {
-            "pass": "routes",
-            "tls": {
-                "certificate": "cd.chain"
-            }
-        }
+		}
 	},
 	"routes": [
 		{
-			"match": {
-				"uri": ["/api/*", "/xkcd/api/*"]
-			},
 			"action": {
-				"pass": "upstreams/edge"
-			}
-		},
-		{
-			"action": {
-				"share": "/var/dist/",
+				"share": "/var/public/",
 				"fallback": {
-					"share": "/var/public/",
+					"pass": "upstreams/edge",
 					"fallback": {
 						"pass": "upstreams/render"
 					}
