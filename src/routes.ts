@@ -1,22 +1,25 @@
-import type { ServerRequest } from "../deps.ts";
-import { PROTOCOL } from "./constants.ts";
+import Render from "./components/render.tsx";
+import Home from "./components/home.tsx";
 
-async function main(request: ServerRequest) {
+async function home() {
   try {
-    const host = request.headers.get("host");
-    const defaultURL = `${PROTOCOL}://${host}/comics`;
-
     const headers = new Headers();
-    headers.set("Location", defaultURL);
+    headers.set("Date", new Date().toUTCString());
+    headers.set("Connection", "keep-alive");
+    headers.set("Content-Type", "text/html; charset=utf-8");
 
-    const response = {
-      status: 302,
-      headers,
-    };
-    return response;
+    const body = await Render(
+      {
+        Component: Home,
+      },
+    );
+
+    return new Response(new TextEncoder().encode(body), { headers });
   } catch (error) {
-    return { status: 500 };
+    return new Response(error.message || error.toString(), {
+      status: 500,
+    });
   }
 }
 
-export default main;
+export default home;

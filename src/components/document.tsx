@@ -1,9 +1,8 @@
-import { React } from "../../deps.ts";
-
+import React from "https://esm.sh/react";
 interface IDocumentProps {
   style?: string;
   meta?: string;
-  children?: string;
+  children?: string | React.ElementType;
 }
 
 function Document({ style = "css/style.css", meta, children }: IDocumentProps) {
@@ -34,7 +33,7 @@ function Document({ style = "css/style.css", meta, children }: IDocumentProps) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#cf133f" />
+        {/* <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#cf133f" /> */}
         <meta name="apple-mobile-web-app-title" content="ABCD" />
         <meta name="application-name" content="ABCD" />
         <meta name="msapplication-TileColor" content="#da532c" />

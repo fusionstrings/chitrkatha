@@ -7,7 +7,7 @@ function main(args: string[]): Deno.Process {
     cmd: [
       "deno",
       "run",
-      "--importmap=importmap.json", // watch is not compatible with this
+      "--import-map=deno.importmap", // watch is not compatible with this
       "--unstable",
       "--allow-net",
       "--allow-read",

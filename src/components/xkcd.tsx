@@ -1,4 +1,4 @@
-import { React } from "../../deps.ts";
+import React from "https://esm.sh/react";
 
 type Comics = {
   month: string;
@@ -34,7 +34,7 @@ function Gallery({ comics, pages, page, records, offset }: GalleryProps) {
         {comics?.map(({ img, alt, safe_title, num, transcript }) => (
           <figure className="comics-strip" key={num}>
             <h3 className="strip-title">{safe_title}</h3>
-            <a href={`/comics/${num}`}>
+            <a href={`/xkcd/${num}`}>
               {/* https://github.com/facebook/create-react-app/issues/9745 to use ` loading="lazy"`*/}
               <img
                 src={img}
@@ -50,7 +50,7 @@ function Gallery({ comics, pages, page, records, offset }: GalleryProps) {
         <ul className="pagination">
           {pageList.map((pageCount: number) => (
             <li key={pageCount} className={pageCount === page ? "active" : ""}>
-              <a href={`/comics?page=${pageCount}`}>
+              <a href={`/xkcd?page=${pageCount}`}>
                 {pageCount}
               </a>
             </li>

@@ -1,4 +1,4 @@
-import { React } from "../../deps.ts";
+import React from "https://esm.sh/react";
 
 type PageProps = {
   path?: string;

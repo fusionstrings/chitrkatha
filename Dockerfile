@@ -1,15 +1,15 @@
-FROM hayd/alpine-deno:1.4.3
+FROM hayd/deno:distroless-1.9.2
 
-EXPOSE 1993
+EXPOSE 1729
 
 WORKDIR /app
 
-USER deno
+#USER deno
 
 COPY deps.ts .
-RUN deno cache deps.ts
+# RUN deno cache deps.ts
 
 ADD . .
-RUN deno cache start.ts
+# RUN deno cache --import-map=deno.importmap --unstable start.ts
 
-CMD ["run", "--unstable", "--allow-all", "start.ts"]
+CMD ["run", "--import-map=deno.importmap", "--unstable", "--allow-all", "start.ts"]

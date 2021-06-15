@@ -1,0 +1,146 @@
+{
+	"/android-chrome-192x192.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/android-chrome-192x192.png",
+		"name": "android-chrome-192x192.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/android-chrome-192x192.png"
+	},
+	"/android-chrome-512x512.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/android-chrome-512x512.png",
+		"name": "android-chrome-512x512.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/android-chrome-512x512.png"
+	},
+	"/apple-touch-icon.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/apple-touch-icon.png",
+		"name": "apple-touch-icon.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/apple-touch-icon.png"
+	},
+	"/browserconfig.xml": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/browserconfig.xml",
+		"name": "browserconfig.xml",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/browserconfig.xml"
+	},
+	"/comic-book.svg": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/comic-book.svg",
+		"name": "comic-book.svg",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/comic-book.svg"
+	},
+	"/css/style.css": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/css/style.css",
+		"name": "style.css",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/css/style.css"
+	},
+	"/favicon-16x16.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/favicon-16x16.png",
+		"name": "favicon-16x16.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/favicon-16x16.png"
+	},
+	"/favicon-32x32.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/favicon-32x32.png",
+		"name": "favicon-32x32.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/favicon-32x32.png"
+	},
+	"/favicon.ico": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/favicon.ico",
+		"name": "favicon.ico",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/favicon.ico"
+	},
+	"/favicon.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/favicon.png",
+		"name": "favicon.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/favicon.png"
+	},
+	"/images/chitrkatha-minimal-logo.svg": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/images/chitrkatha-minimal-logo.svg",
+		"name": "chitrkatha-minimal-logo.svg",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/images/chitrkatha-minimal-logo.svg"
+	},
+	"/mstile-144x144.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/mstile-144x144.png",
+		"name": "mstile-144x144.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/mstile-144x144.png"
+	},
+	"/mstile-150x150.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/mstile-150x150.png",
+		"name": "mstile-150x150.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/mstile-150x150.png"
+	},
+	"/mstile-310x150.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/mstile-310x150.png",
+		"name": "mstile-310x150.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/mstile-310x150.png"
+	},
+	"/mstile-310x310.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/mstile-310x310.png",
+		"name": "mstile-310x310.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/mstile-310x310.png"
+	},
+	"/mstile-70x70.png": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/mstile-70x70.png",
+		"name": "mstile-70x70.png",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/mstile-70x70.png"
+	},
+	"/safari-pinned-tab.svg": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/safari-pinned-tab.svg",
+		"name": "safari-pinned-tab.svg",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/safari-pinned-tab.svg"
+	},
+	"/site.webmanifest": {
+		"path": "/Users/dilip/@fusionstrings/chitrkatha-deno-deploy/public/site.webmanifest",
+		"name": "site.webmanifest",
+		"isFile": true,
+		"isDirectory": false,
+		"isSymlink": false,
+		"pathname": "/site.webmanifest"
+	}
+}

@@ -6,6 +6,21 @@
 	"configurations": [
 		{
 			"type": "pwa-node",
+			"name": "Debug Deno file",
+			"request": "launch",
+			"program": "${file}",
+			"cwd": "${workspaceFolder}",
+			"runtimeExecutable": "deno",
+			"runtimeArgs": [
+				"run",
+				"--inspect=127.0.0.1:9229",
+				"--unstable",
+				"--allow-all"
+			],
+			"attachSimplePort": 9229
+		},
+		{
+			"type": "pwa-node",
 			"request": "launch",
 			"name": "Launch Deno 1",
 			"program": "${workspaceFolder}/src/server.ts",

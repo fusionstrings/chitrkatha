@@ -1,29 +1,24 @@
-import type { ServerRequest } from "../../deps.ts";
 import Render from "../components/render.tsx";
+import PageNotFound from "../components/404.tsx";
 
-async function pageNotFound(request: ServerRequest) {
+async function pageNotFound() {
   try {
     const headers = new Headers();
     headers.set("Date", new Date().toUTCString());
     headers.set("Connection", "keep-alive");
     headers.set("Content-Type", "text/html; charset=utf-8");
 
-    const { default: Component } = await import("../components/404.tsx");
-
     const body = await Render(
       {
-        Component,
+        Component: PageNotFound,
       },
     );
 
-    const response = {
-      status: 404,
-      body,
-      headers,
-    };
-    return response;
+    return new Response(new TextEncoder().encode(body), { headers, status: 404 });
   } catch (error) {
-    return { status: 500 };
+    return new Response(error.message || error.toString(), {
+      status: 500,
+    });
   }
 }
 

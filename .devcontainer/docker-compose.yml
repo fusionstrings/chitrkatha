@@ -1,0 +1,69 @@
+services:
+  chitrkatha:
+    # Using a Dockerfile is optional, but included for completeness.
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      # [Optional] You can use build args to set options. e.g. 'VARIANT' below affects the image in the Dockerfile
+      # args: 
+      #   VARIANT: buster
+
+    volumes:
+      # This is where VS Code should expect to find your project's source code and the value of "workspaceFolder" in .devcontainer/devcontainer.json
+      - ..:/workspace:cached
+
+      # Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker-compose for details.
+      # - /var/run/docker.sock:/var/run/docker.sock 
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"  
+
+    # Runs app on the same network as the service container, allows "forwardPorts" in devcontainer.json function.
+    network_mode: service:caddy
+    secrets:
+      - api_key_file
+      - api_key_external
+    environment:
+      - API_KEY=/run/secrets/api_key_file
+    env_file: ../.env
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+    # Uncomment the next line to use a non-root user for all processes - See https://aka.ms/vscode-remote/containers/non-root for details.
+    # user: vscode
+
+    # Uncomment the next four lines if you will use a ptrace-based debugger like C++, Go, and Rust.
+    # cap_add:
+    #   - SYS_PTRACE
+    # security_opt:
+    #   - seccomp:unconfined
+    
+  # You can include other services not opened by VS Code as well
+  caddy:
+    image: caddy:2.3.0-alpine
+    restart: unless-stopped
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    expose:
+      - "80"
+      - "443"
+      - "8080"
+
+    # As in the "app" service, use "forwardPorts" in **devcontainer.json** to forward an app port locally.
+
+secrets:
+  api_key_file:
+    file: ../.secrets/api.txt
+  api_key_external:
+    external: true
+
+  volumes:
+    caddy_data:
+    caddy_config:

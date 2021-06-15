@@ -1,4 +1,5 @@
-import { React, ReactDOMServer } from "../../deps.ts";
+import React from "https://esm.sh/react";
+import ReactDOMServer from 'https://esm.sh/react-dom/server'
 import Document from "./document.tsx";
 
 type RenderProps = {
@@ -6,7 +7,7 @@ type RenderProps = {
   Component: React.ElementType;
 };
 
-async function Render({ Component, props }: RenderProps) {
+function Render({ Component, props }: RenderProps) {
   // preserve data-reactroot
   const __html = ReactDOMServer.renderToString(
     <main id="__root"><Component {...props} /></main>,

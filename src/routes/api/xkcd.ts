@@ -1,4 +1,3 @@
-import type { ServerRequest } from "../../../deps.ts";
 import { PROTOCOL } from "../../constants.ts";
 import { removePathQuery, removeSlashes } from "../../functions.ts";
 
@@ -12,16 +11,16 @@ async function fetchComics(comicsNumber: string) {
     const json = await response.json();
     return json;
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 }
 
-async function main(request: ServerRequest) {
+async function main(request: Request) {
   try {
-    const host = request.headers.get("host");
+    // const host = request.headers.get("host");
 
     // Assuming `http`
-    const url = new URL(`${PROTOCOL}://${host}${request.url}`);
+    const url = new URL(request.url);
     const page = url.searchParams.get("page");
     const offset = url.searchParams.get("offset");
 
@@ -31,11 +30,11 @@ async function main(request: ServerRequest) {
     headers.set("Content-Type", "application/json; charset=utf-8");
 
     const path = removeSlashes(removePathQuery(request.url));
-    const comicsNumber = removeSlashes(path.split("api/comics")[1]);
+    const comicsNumber = removeSlashes(path.split("api/xkcd")[1]);
 
     const latestComics = await fetchComics("");
     const { num: TOTAL_RECORDS } = latestComics;
-    const RECORDS_PER_PAGE = offset ? parseInt(offset, 10) : 100;
+    const RECORDS_PER_PAGE = offset ? parseInt(offset, 10) : 25;
     const TOTAL_PAGES = Math.ceil(TOTAL_RECORDS / RECORDS_PER_PAGE);
     const PAGE_NUMBER = page ? parseInt(page, 10) : 1;
 
@@ -52,11 +51,7 @@ async function main(request: ServerRequest) {
       const body = JSON.stringify(
         { ...payload, comics: [data].filter(Boolean) },
       );
-      const response = {
-        body,
-        headers,
-      };
-      return response;
+      return new Response(new TextEncoder().encode(body), { headers });
     }
 
     // This might be a redirect
@@ -70,7 +65,7 @@ async function main(request: ServerRequest) {
               : TOTAL_RECORDS - (RECORDS_PER_PAGE * (PAGE_NUMBER - 1))) -
             index,
         )
-          .map(async (comicsNumber: number) => {
+          .map((comicsNumber: number) => {
             try {
               return fetchComics(`${comicsNumber}`);
             } catch (error) {
@@ -84,13 +79,12 @@ async function main(request: ServerRequest) {
       : [latestComics];
 
     const body = JSON.stringify({ ...payload, comics: data.filter(Boolean) });
-    const response = {
-      body,
-      headers,
-    };
-    return response;
+    
+    return new Response(new TextEncoder().encode(body), { headers });
   } catch (error) {
-    return { status: 500 };
+    return new Response(error.message || error.toString(), {
+      status: 500,
+    });
   }
 }
 

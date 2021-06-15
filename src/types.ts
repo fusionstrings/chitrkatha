@@ -12,4 +12,16 @@ type TComics = {
   day: string;
 };
 
-export type { TComics };
+type IRequestHandler = (request: Request) => Promise<void>;
+
+type TAssetMap = {
+  [key: string]: {
+    pathname: string;
+    path: string;
+    name: string;
+    isFile: boolean;
+    isDirectory: boolean;
+    isSymlink: boolean;
+  };
+};
+export type { TComics, IRequestHandler, TAssetMap };
