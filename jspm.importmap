@@ -1,0 +1,14 @@
+{
+  "imports": {
+    "app": "./src/script.js",
+    "dapp": "./src/script.js",
+    "react": "https://ga.jspm.io/npm:react@16.13.1/dev.index.js",
+    "xstate": "https://ga.jspm.io/npm:xstate@4.13.0/lib/index.js"
+  },
+  "scopes": {
+    "https://ga.jspm.io/npm:react@16.13.1/": {
+      "object-assign": "https://ga.jspm.io/npm:object-assign@4.1.1/index.js",
+      "prop-types/checkPropTypes": "https://ga.jspm.io/npm:prop-types@15.7.2/dev.checkPropTypes.js"
+    }
+  }
+}
